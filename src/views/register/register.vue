@@ -32,7 +32,6 @@
 
 <script>
   import {XInput, Group, XButton, Cell} from 'vux'
-  import router from '../../router/index'
   export default{
     components: {
       XInput,
@@ -42,7 +41,7 @@
     },
     methods: {
       login: function () {
-        router.push('/login')
+        this.$router.push('/login')
       }
     }
   }

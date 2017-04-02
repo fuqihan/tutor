@@ -8,6 +8,7 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
+    url: 'http://localhost:8082/nice',
     massage: 1,
     aTodos: {
       value: '默认默认',

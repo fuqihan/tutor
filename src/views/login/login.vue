@@ -7,20 +7,21 @@
       <div class="center"><span>登录</span></div>
       <div class="right" @click="register"><span>注册</span></div>
     </div>
-<!--登录输入框-->
-    <div class="login-input" >
+    <!--登录输入框-->
+    <div class="login-input">
       <div class="login-avatar">
         <div class="avatar"></div>
       </div>
       <div class="input-height">
         <group>
-          <x-input title="账号" class="in" name="username" placeholder="请输入账号" is-type="china-name" ></x-input>
+          <x-input title="账号" class="in" :max="5" v-model="user"
+                   placeholder="请输入账号" :debounce="1000"></x-input>
         </group>
         <group>
-          <x-input title="密码" class="in" type="password" name="password" placeholder="请输入密码"
+          <x-input title="密码" class="in" type="password" v-model="password" placeholder="请输入密码"
                    is-type="china-password"></x-input>
         </group>
-        <x-button type="primary" class="button" action-type="button">登录</x-button>
+        <x-button type="warn" class="button" action-type="button" @click.native="username">登录</x-button>
       </div>
       <div class="third">
         <div class="hr"></div>
@@ -38,7 +39,6 @@
 
 <script>
   import {XInput, Group, XButton, Cell} from 'vux'
-  import router from '../../router/index'
   export default{
     components: {
       XInput,
@@ -46,19 +46,35 @@
       Group,
       Cell
     },
+    data () {
+      return {
+        user: '',
+        password: ''
+      }
+    },
     methods: {
-        register: function () {
-          router.push('register')
-        }
+      register: function () {
+        this.$router.push('register')
+      },
+      username: function () {
+        this.axios.post(this.$store.state.url, {
+            userName: 12345,
+            name: 11,
+            age: 11
+        }).then((res) => {
+          console.log(res.data.age)
+        })
+      }
     }
   }
 </script>
 
 <style lang="less">
- @import "../../iconfont/fanhui/iconfont.css";
- @import "../../iconfont/qq/iconfont.css";
- @import "../../iconfont/weixin/iconfont.css";
- @import "../../iconfont/zhifu/iconfont.css";
+  @import "../../iconfont/fanhui/iconfont.css";
+  @import "../../iconfont/qq/iconfont.css";
+  @import "../../iconfont/weixin/iconfont.css";
+  @import "../../iconfont/zhifu/iconfont.css";
+
   .login {
     background: url("../../images/bak.jpg") no-repeat;
     background-size: 100% 100%;
@@ -146,16 +162,19 @@
     justify-content: center;
     align-items: center;
   }
-  .login-input > .third>.hr{
+
+  .login-input > .third > .hr {
     width: 30%;
     height: 1px;
     background: #2fedc4;
   }
-  .login-input > .third>.font{
+
+  .login-input > .third > .font {
     font-size: 20px;
     color: #2fedc4;
   }
-  .login-input >.icon{
+
+  .login-input > .icon {
     width: 100%;
     height: 50px;
     margin-top: 10px;
