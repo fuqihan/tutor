@@ -3,9 +3,10 @@
   <div class="login">
     <!--登录头-->
     <div class="login-header">
-      <div class="left"><i class="iconfont-fanhui icon-fanhui"></i></div>
+
+      <div class="left"> <router-link to="/home"><i class="iconfont-fanhui icon-fanhui"></i></router-link></div>
       <div class="center"><span>登录</span></div>
-      <div class="right" @click="register"><span>注册</span></div>
+      <div class="right"> <router-link to="/register">注册</router-link></div>
     </div>
     <!--登录输入框-->
     <div class="login-input">
@@ -53,9 +54,6 @@
       }
     },
     methods: {
-      register: function () {
-        this.$router.push('register')
-      },
       username: function () {
         this.axios.post(this.$store.state.url, {
             userName: 12345,
@@ -80,6 +78,9 @@
     background-size: 100% 100%;
     height: 35.8em;
   }
+  a{
+    display: block;
+  }
 
   .login-header {
     width: 100%;
@@ -89,11 +90,10 @@
   }
 
   .login-header > .left {
-    width: 60px;
+    flex: 1;
     height: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
+    margin-top: 5px;
   }
 
   .login-header > .center {
@@ -106,11 +106,11 @@
   }
 
   .login-header > .right {
-    width: 15%;
+    flex: 1;
     height: 32px;
     margin-top: 5px;
-    margin-right: 15px;
     font-size: 20px;
+    text-align: center;
     color: #086929;
   }
 

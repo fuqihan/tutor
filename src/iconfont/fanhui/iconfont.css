@@ -8,6 +8,9 @@
 .iconfont-fanhui {
   font-family:"iconfont" !important;
   font-size:20px;
+  /*margin-left: 40px;*/
+  margin: 0 auto;
+  padding-top: 6px;
   font-style:normal;
   color: #086929;
   -webkit-font-smoothing: antialiased;

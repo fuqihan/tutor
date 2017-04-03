@@ -1,7 +1,7 @@
 <template>
   <div class="register" >
     <div class="register-header">
-      <div class="left" @click="login"><i class="iconfont-fanhui icon-fanhui"></i></div>
+      <div class="left"><router-link to="/home"><i class="iconfont-fanhui icon-fanhui"></i></router-link></div>
       <div class="center"><span>注册</span></div>
       <div class="right"><span></span></div>
     </div>
@@ -38,11 +38,6 @@
       XButton,
       Group,
       Cell
-    },
-    methods: {
-      login: function () {
-        this.$router.push('/login')
-      }
     }
   }
 </script>
@@ -64,11 +59,10 @@
   }
 
   .register-header > .left {
-    width: 60px;
+    flex: 1;
     height: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-top: 5px;
+    text-align: center;
   }
 
   .register-header > .center {
@@ -81,7 +75,7 @@
   }
 
   .register-header > .right {
-    width: 15%;
+    flex: 1;
     height: 32px;
     margin-top: 5px;
     margin-right: 15px;
